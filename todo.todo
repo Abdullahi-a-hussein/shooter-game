@@ -8,9 +8,9 @@
 - [] Remove off screen Projectiles @done
 - [] Colorize Game @done
 - [] Shrink enemies on hit @done
-- [] Create particle explosion on hit
-- [] Add Score
-- [] Add game over UI
-- [] Add Restart buttom
-- [] Add start game buttom
+- [] Create particle explosion on hit @done
+- [] Add Score @done
+- [] Add game over UI @done
+- [] Add Restart buttom @done
+- [] Add start game buttom @done
 

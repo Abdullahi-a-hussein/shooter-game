@@ -17,7 +17,66 @@
         canvas {
             background-color: black;
         }
+
+        h2 {
+            margin-left: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+            padding: 5px;
+            user-select: none;
+        }
+
+        #modal {
+            display: flex;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .content {
+            background-color: white;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .points {
+            font-weight: bolder;
+            font-size: 50px;
+            margin-bottom: -10px;
+        }
+
+        p {
+            color: rgb(137, 137, 137);
+            margin-top: -8px;
+
+        }
+
+        button {
+            width: 100%;
+            border-radius: 8px;
+            padding: 6px;
+            font-weight: 600;
+            font-size: 25px;
+            background-color: rgb(54, 199, 248);
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
     </style>
+    <h2> Score: <span id="score">0</span></h2>
+    <div id="modal">
+        <div class="content">
+            <h1 id="points">0</h1>
+            <p>Points</p>
+            <button id="startBtn">Start Game</button>
+        </div>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="particle.js"></script>
     <script src="enemy.js"></script>

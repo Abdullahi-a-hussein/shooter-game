@@ -2,6 +2,12 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 const ctx = canvas.getContext("2d");
 let playerDied = false;
+let score = 0;
+const scoreContainer = document.getElementById("score");
+scoreContainer.textContent = score;
+const startBtn = document.getElementById("startBtn");
+const modal = document.getElementById("modal");
+const pointsEl = document.getElementById("points");
 
 const lerp = (a, b, points) => {
   const radi = [];
@@ -11,8 +17,8 @@ const lerp = (a, b, points) => {
   return radi;
 };
 const player = new Player(canvas.width / 2, canvas.height / 2);
-const enemies = [];
-const particles = [];
+let enemies = [];
+let particles = [];
 
 function createEnemies() {
   const radius = Math.random() * (50 - 5) + 5;
@@ -86,11 +92,14 @@ function updateScreen() {
         }
         if (enemy.radius > 20) {
           enemy.radius = enemy.radius * 0.5;
+          score += 5;
         } else {
           enemies.splice(index, 1);
+          score += 10;
         }
 
         player.projectiles.splice(i, 1);
+        scoreContainer.textContent = score;
       }
     });
   });
@@ -101,9 +110,25 @@ function animate() {
     requestAnimationFrame(animate);
     updateScreen();
   } else {
+    enemies = [];
+    pointsEl.textContent = score;
+    modal.style.display = "flex";
     return;
   }
 }
 
-animate();
-spawnEnemies();
+startBtn.addEventListener("click", () => {
+  if (!playerDied) {
+    animate();
+    spawnEnemies();
+    modal.style.display = "none";
+  } else {
+    playerDied = false;
+    modal.style.display = "none";
+    animate();
+    spawnEnemies();
+    score = 0;
+    player.projectiles = [];
+    particles = [];
+  }
+});
